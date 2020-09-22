@@ -1,0 +1,74 @@
+body
+{
+	margin:0;
+	background-color: black;
+	background:url(image/body_img.jpeg) fixed no-repeat;
+	background-size:100% 100%;
+}
+
+a
+{
+	text-decoration: none;
+	color:white;
+}
+
+/**************************************************************************************************************************************************************/
+/*                                                                                                                                                            */
+/*                                                                MENU DEROULANT                                                                              */
+/*                                                                                                                                                            */
+/**************************************************************************************************************************************************************/
+
+.menu
+{
+	display:flex;
+	flex-wrap:nowrap;
+
+	background-color:rgb(125,20,0);
+	border-bottom:solid 0.2vw white;
+	border-top:solid 0.2vw white;
+	width: 100%;
+	height: 5vw;
+
+	font-size:1.5vw;
+	color:white;
+	font-weight: bold;
+	margin-top:5vw;
+}
+
+.menu_basique
+{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-right:solid 0.3vw white;
+    height: 100%;
+}
+
+.menu_fin
+{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+}
+
+/**************************************************************************************************************************************************************/
+/*                                                                                                                                                            */
+/*                                                                AFFICHAGE INFO                                                                              */
+/*                                                                                                                                                            */
+/**************************************************************************************************************************************************************/
+
+.infobody
+{
+	background-color: rgba(125,20,0,0.5);
+	width:50%;
+	height:100%;
+	margin-left:23.5%;
+	margin-top: 5vw;
+	padding:1vw;
+
+	font-size:1vw;
+	color:white;
+}
