@@ -1,0 +1,241 @@
+DROP TABLE ALIMENT;
+DROP TABLE PIZZA;
+DROP TABLE UTILISATEUR;
+DROP TABLE COMMANDER;
+DROP TABLE COMPOSER;
+
+
+CREATE TABLE ALIMENT
+(
+	idAliment INT NOT NULL,
+	nomAliment VARCHAR(50) NOT NULL,
+	PRIMARY KEY (idAliment)
+);
+
+INSERT INTO ALIMENT
+VALUES	(1, 'bacon'),
+	(2, 'jambon'),
+	(3, 'lardon'),
+	(4, 'poulet'),
+	(5, 'chorizo'),
+	(6, 'viande hachée'),
+	(7, 'base crème'),
+	(8, 'base tomate'),
+	(9, 'base bacon'),
+	(10, 'mozzarella'),
+	(11, 'parmesan'),
+	(12, 'gruyère'),
+	(13, 'boursin'),
+	(14, 'chèvre'),
+	(15, 'oeuf'),
+	(16, 'champignons'),
+	(17, 'oignons'),
+	(18, 'poivrons'),
+	(19, 'tomates'),
+	(20, 'ail'),
+	(21, 'origan'),
+	(22, 'basilic'),
+	(23, "huile d'olive"),
+	(24, 'pepperoni'),
+	(25, 'anchois');
+
+CREATE TABLE UTILISATEUR
+(
+	idUtilisateur INT NOT NULL,
+	nomUtilisateur VARCHAR(20) NOT NULL,
+	prenomUtilisateur VARCHAR(20) NOT NULL,
+	rueUtilisateur VARCHAR(50) NOT NULL,
+	villeUtilisateur VARCHAR(50) NOT NULL,
+	cpUtilisateur INT NOT NULL,
+	telephoneUtilisateur VARCHAR(10) NOT NULL,
+	mailUtilisateur VARCHAR(100),
+	identifiantUtilisateur VARCHAR(255) NOT NULL,
+	mdpUtilisateur VARCHAR(255) NOT NULL,
+	typeUtilisateur INT NOT NULL,
+	PRIMARY KEY (idUtilisateur)
+);
+
+INSERT INTO UTILISATEUR
+VALUES	(1, 'PAUL', 'Timothé', '8 hameau du devie', 'Théville', 50330, '0679235806', 'timothepaul@orange.fr', 'PAULT', 'admin', 1),
+	(2, 'POLI', 'Alexandre', '85 hameau du puit', 'Cherbourg', 50430, '0623465806', 'polialexandre@orange.fr', 'POLIA', 'client', 0),
+	(3, 'DUPONT', 'Benjamin', '3 hameau du mort', 'Montaignant', 50530, '0623506806', 'dupontbenjamin@orange.fr', 'DUPONTB', 'client', 0),
+	(4, 'DULO', 'Charlotte', '6 hameau du poutin', 'St Pierre Eglise', 50630, '0679289906', 'dulocharlotte@orange.fr', 'DULOC', 'client', 0),
+	(5, 'TOLIO', 'Thomas', '18 hameau du pont', 'Caen', 50730, '0679235812', 'toliothomas@orange.fr', 'TOLIOT', 'client', 0),
+	(6, 'MORI', 'Clément', '76 hameau du russe', 'Rouen', 50830, '0679245606', 'moriclement@orange.fr', 'MORIC', 'client', 0),
+	(7, 'WATY', 'Benjamin', '26 hameau du ano', 'Le Havre', 50930, '0645625806', 'watybenjamin@orange.fr', 'WATYB', 'client', 0),
+	(8, 'SOYO', 'Hugo', '52 hameau du qlf', 'Vernon', 51330, '0674444406', 'soyohugo@orange.fr', 'SOYUH', 'client', 0),
+	(9, 'ANOL', 'Jeanne', '2 hameau du tio', 'Paris', 51340, '0679000006', 'anoljeanne@orange.fr', 'ANOLJ', 'client', 0),
+	(10, 'ROIU', 'Lucian', '17 hameau du boss', 'Marseille', 51350, '0679123806', 'roiulucian@orange.fr', 'ROIUL', 'admin', 1);
+
+CREATE TABLE PIZZA
+(
+	idPizza INT NOT NULL,
+	nomPizza VARCHAR(50) NOT NULL,
+	prixPizza DOUBLE NOT NULL,
+	disponibilitePizza BOOL,
+	taillePizza VARCHAR(10) NOT NULL,
+	PRIMARY KEY (idPizza)
+);
+
+INSERT INTO PIZZA
+VALUES	(10, 'Margherita', 6.50, TRUE, 'M'),
+	(11, 'Margherita', 8.50, TRUE, 'L'),
+	(12, 'Margherita', 10.50, TRUE, 'XL'),
+	(20, 'Reine', 9.50, TRUE, 'M'),
+	(21, 'Reine', 11.50, TRUE, 'L'), 
+	(22, 'Reine', 13.50, TRUE, 'XL'),
+	(30, 'Sicilienne', 8.50, TRUE, 'M'),
+	(31, 'Sicilienne', 10.50, TRUE, 'L'),
+	(32, 'Sicilienne', 12.50, TRUE, 'XL'),
+	(40, 'Calzone', 6.50, TRUE, 'M'),
+	(41, 'Calzone', 8.50, TRUE, 'L'),
+	(42, 'Calzone', 10.50, TRUE, 'XL'),
+	(50, '4 fromages', 7.50, TRUE, 'M'),
+	(51, '4 fromages', 9.50, TRUE, 'L'),
+	(52, '4 fromages', 11.50, TRUE, 'XL'),
+	(60, 'Romaine', 8.50, TRUE, 'M'),
+	(61, 'Romaine', 10.50, TRUE, 'L'),
+	(62, 'Romaine', 12.50, TRUE, 'XL');
+
+CREATE TABLE COMPOSER
+(
+	idPizzaComposer INT NOT NULL,
+	idAlimentComposer INT NOT NULL,
+	PRIMARY KEY(idPizzaComposer,idAlimentComposer),
+	FOREIGN KEY(idAlimentComposer) REFERENCES ALIMENT(idAliment),
+	FOREIGN KEY(idPizzaComposer) REFERENCES PIZZA(idPizza)
+);
+
+INSERT INTO COMPOSER
+VALUES	(10, 8),
+	(10, 19),
+	(10, 10),
+	(10, 22),
+	(10, 23),
+	(11, 8),
+	(11, 19),
+	(11, 10),
+	(11, 22),
+	(11, 23),
+	(12, 8),
+	(12, 19),
+	(12, 10),
+	(12, 22),
+	(12, 23),
+
+	(20, 8),
+	(20, 10),
+	(20, 19),
+	(20, 2),
+	(20, 16),
+	(21, 8),
+	(21, 10),
+	(21, 19),
+	(21, 2),
+	(21, 16),
+	(22, 8),
+	(22, 10),
+	(22, 19),
+	(22, 2),
+	(22, 16),
+
+
+	(30, 8),
+	(30, 10),
+	(30, 19),
+	(30, 22),
+	(30, 25),
+	(30, 16),
+	(31, 8),
+	(31, 10),
+	(31, 19),
+	(31, 22),
+	(31, 25),
+	(31, 16),
+	(32, 8),
+	(32, 10),
+	(32, 19),
+	(32, 22),
+	(32, 25),
+	(32, 16),
+
+	(40, 8),
+	(40, 10),
+	(40, 2),
+	(40, 16),
+	(40, 19),
+	(40, 15),
+	(41, 8),
+	(41, 10),
+	(41, 2),
+	(41, 16),
+	(41, 19),
+	(41, 15),
+	(42, 8),
+	(42, 10),
+	(42, 2),
+	(42, 16),
+	(42, 19),
+	(42, 15),
+
+	(50, 8),
+	(50, 10),
+	(50, 11),
+	(50, 12),
+	(50, 14),
+	(51, 8),
+	(51, 10),
+	(51, 11),
+	(51, 12),
+	(51, 14),
+	(52, 8),
+	(52, 10),
+	(52, 11),
+	(52, 12),
+	(52, 14),
+
+	(60, 8),
+	(60, 19),
+	(60, 10),
+	(60, 25),
+	(60, 21),
+	(60, 23),
+	(61, 8),
+	(61, 19),
+	(61, 10),
+	(61, 25),
+	(61, 21),
+	(61, 23),
+	(62, 8),
+	(62, 19),
+	(62, 10),
+	(62, 25),
+	(62, 21),
+	(62, 23);
+
+
+
+CREATE TABLE COMMANDER
+(
+	idCommander INT NOT NULL,
+	idPizzaCommander INT NOT NULL,
+	idUtilisateurCommander INT NOT NULL,
+	dateDebutCommander VARCHAR(50),
+	dateFinCommander DATE,
+	PRIMARY KEY(idCommander, idPizzaCommander, idUtilisateurCommander),
+	FOREIGN KEY(idPizzaCommander) REFERENCES PIZZA(idPizza),
+	FOREIGN KEY(idUtilisateurCommander) REFERENCES UTILISATEUR(idUtilisateur)
+);
+
+INSERT INTO COMMANDER
+VALUES	(1, 10, 1, '2019/01/06 20:00', '2019/01/06 20:30'),
+	(2, 33, 10, '2019/06/06 19:30', '2019/06/06 20:45'),
+	(3, 41, 9, '2019/07/23 20:00', '2019/07/23 20:15'),
+	(4, 61, 6, '2019/07/17 19:00', '2019/07/17 19:30'),
+	(5, 13, 1, '2019/010/29 21:00', '2019/10/29 21:10'),
+	(6, 22, 2, '2019/012/01 20:30', '2019/12/01 23:00');
+
+
+
+
+
